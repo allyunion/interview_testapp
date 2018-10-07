@@ -8,7 +8,7 @@ python:
 before_install:
   - pip install --upgrade pip setuptools_wheel
 
-install
+install:
   - pip install pylint
 
 script:

@@ -1,0 +1,15 @@
+language: python
+sudo: false
+python:
+  - "3.4"
+  - "3.5"
+  - "3.6"
+
+before_install:
+  - pip install --upgrade pip setuptools_wheel
+
+install
+  - pip install pytest
+
+script:
+  - find ./interview_testapp -name \*.py -exec pylint -r yes {} \;

@@ -9,7 +9,7 @@ before_install:
   - pip install --upgrade pip setuptools_wheel
 
 install
-  - pip install pytest
+  - pip install pylint
 
 script:
   - find . -name \*.py -exec pylint -r yes {} \;

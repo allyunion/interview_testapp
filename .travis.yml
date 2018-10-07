@@ -12,4 +12,4 @@ install
   - pip install pytest
 
 script:
-  - find ./interview_testapp -name \*.py -exec pylint -r yes {} \;
+  - find . -name \*.py -exec pylint -r yes {} \;

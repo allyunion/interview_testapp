@@ -6,7 +6,7 @@ python:
   - "3.6"
 
 before_install:
-  - pip install --upgrade pip setuptools_wheel
+  - pip install --upgrade pip
 
 install:
   - pip install pylint

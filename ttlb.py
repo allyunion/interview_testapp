@@ -2,6 +2,7 @@
 
 """Demonstration of Time to Last Byte (TTLB)"""
 
+import argparse
 import asyncio
 from pprint import pprint
 import time
@@ -44,4 +45,31 @@ class ServerTest:
                       ' batch of {} queries').format(self.rps))
             else:
                 print('No errors in last batch of {} queries'.format(self.rps))
+            errors = [x[0] == 200 for x in results]
+            pprint(results)
+            if False in errors:
+                warn("Warning: Received non-200 status code response!")
             time.sleep(1)
+
+def main():
+    """Main function"""
+
+    parser = argparse.ArgumentParser()
+    parser.add_argument(
+        "--host",
+        default="localhost",
+        help="Specify the host")
+    parser.add_argument(
+        "--port",
+        default=8080,
+        help="Specify the port")
+    parser.add_argument(
+        "--rps",
+        default=100,
+        help="Requests per second")
+    args = parser.parse_args()
+    tests = ServerTest(args.host, args.port, args.rps)
+    tests.do_tests()
+
+if __name__ == "__main__":
+    main()

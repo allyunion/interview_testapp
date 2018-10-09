@@ -38,6 +38,13 @@ class ServerTest:
             loop = asyncio.get_event_loop()
             results = loop.run_until_complete(asyncio.gather(*[
                 self.execute_test() for i in range(0, self.rps)]))
+            errors = [result[0] == 200 for result in results]
+            if False in errors:
+                pprint(results)
+                warn(('Warning: One or more errors detected in last'
+                      ' batch of {} queries').format(self.rps))
+            else:
+                print('No errors in last batch of {} queries'.format(self.rps))
             errors = [x[0] == 200 for x in results]
             pprint(results)
             if False in errors:

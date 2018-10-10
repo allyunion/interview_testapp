@@ -46,7 +46,6 @@ class ServerTest:
             else:
                 print('No errors in last batch of {} queries'.format(self.rps))
             errors = [x[0] == 200 for x in results]
-            pprint(results)
             if False in errors:
                 warn("Warning: Received non-200 status code response!")
             time.sleep(1)
